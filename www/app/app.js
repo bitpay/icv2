@@ -18,7 +18,10 @@ export class MyApp {
     this.tab3Root = Page3;
 
     platform.ready().then(() => {
-      // Do any necessary cordova or native calls here now that the platform is ready
+      if (window.StatusBar) {
+        window.StatusBar.show();
+        window.StatusBar.styleDefault();
+      }
     });
   }
 }
