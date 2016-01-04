@@ -1,34 +1,32 @@
 {
+  "dependencies": {
+    "angular2": "2.0.0-beta.0",
+    "es6-promise": "3.0.2",
+    "es6-shim": "0.33.13",
+    "ionic-framework": "2.0.0-alpha.45",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.10"
+  },
+  "devDependencies": {
+    "androidmanifest": "^2.0.0",
+    "awesome-typescript-loader": "^0.15.9",
+    "electron-prebuilt": "^0.34.1",
+    "plist": "^1.2.0",
+    "strip-sourcemap-loader": "0.0.1",
+    "typescript": "^1.7.3"
+  },
   "name": "icv2",
-  "version": "0.0.1",
   "description": "icv2",
   "main": "electron.js",
   "scripts": {
-    "start": "electron electron.js"
+    "start": "electron electron.js",
+    "install": "cordova prepare",
+    "clean": "rm -rf node_modules; rm -rf platforms; rm -rf plugins"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/bitpay/ionic2-copay.git"
-  },
-  "devDependencies": {
-    "androidmanifest": "^2.0.0",
-    "autoprefixer-loader": "^3.1.0",
-    "awesome-typescript-loader": "0.12.0-rc.2",
-    "css-loader": "^0.22.0",
-    "electron-prebuilt": "^0.34.1",
-    "file-loader": "^0.8.4",
-    "node-sass": "^3.4.2",
-    "plist": "^1.2.0",
-    "resolve-url-loader": "^1.4.2",
-    "sass-loader": "^3.1.1",
-    "style-loader": "^0.13.0",
-    "typescript": "1.5.3",
-    "url-loader": "^0.5.6",
-    "webpack": "^1.12.4"
-  },
-  "dependencies": {
-    "ionic-framework": "~2.0.0-alpha.37",
-    "ionic-native": "~1.0.8"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
@@ -39,9 +37,6 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
-    {
-      "platform": "ios",
-      "locator": "https://github.com/apache/cordova-ios.git"
-    }
+    "ios"
   ]
 }

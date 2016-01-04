@@ -6,28 +6,14 @@
     <content src="index.html" />
     <access origin="*" />
 
-    <plugin name="com.ionic.keyboard" spec="~1.0.8" />
-    <plugin name="cordova-plugin-console" spec="~1.0.1" />
-    <plugin name="cordova-plugin-device" spec="~1.0.1" />
-    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-    <plugin name="cordova-plugin-splashscreen" spec="~2.1.0" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.0.0" />
-
-    <preference name="webviewbounce" value="false" />
-    <preference name="UIWebViewBounce" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="16" />
-    <preference name="BackupWebStorage" value="none" />
-    <preference name="StatusBarStyle" value="default" />
-
-    <hook src="scripts/hooks/ionic_add_platform_class.js" type="after_prepare" />
-
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+
+    <hook src="scripts/hooks/ionic_add_platform_class.js" type="after_prepare" />
 
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -88,4 +74,19 @@
     <platform name="windows">
         <preference name="windows-target-version" value="10.0" />
     </platform>
+
+    <plugin name="com.ionic.keyboard" spec="~1.0.8" />
+    <plugin name="cordova-plugin-console" spec="~1.0.1" />
+    <plugin name="cordova-plugin-device" spec="~1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="~2.1.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.0.0" />
+
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="StatusBarStyle" value="default" />
+
 </widget>
