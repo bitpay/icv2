@@ -13,7 +13,5 @@ Thumbs.db
 /plugins
 app/**/*.js
 app/**/*.js.map
-lib/**/*.js
-lib/**/*.js.map
 
 typings/main*

@@ -13,13 +13,13 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
 
-    <hook src="scripts/hooks/ionic_add_platform_class.js" type="after_prepare" />
+    <hook src="tooling/hooks/all/ionic_add_platform_class.js" type="after_prepare" />
 
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <hook src="scripts/hooks/ios/add-custom-urls-to-plist.js" type="after_prepare" />
-        <hook src="scripts/hooks/ios/add-uistatusbarhidden-to-plist.js" type="after_prepare" />
+        <hook src="tooling/hooks/ios/add-custom-urls-to-plist.js" type="after_prepare" />
+        <hook src="tooling/hooks/ios/add-uistatusbarhidden-to-plist.js" type="after_prepare" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
@@ -50,7 +50,7 @@
 
     <platform name="android">
         <allow-intent href="market:*" />
-        <hook src="scripts/hooks/android/add-custom-urls-to-android-manifest.js" type="after_prepare" />
+        <hook src="tooling/hooks/android/add-custom-urls-to-android-manifest.js" type="after_prepare" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
