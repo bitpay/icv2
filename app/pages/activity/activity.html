@@ -1,0 +1,36 @@
+<ion-navbar *navbar>
+  <ion-title>Activity</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Notifications ({{notifications.length}})
+    </ion-list-header>
+    <ion-item *ngFor="#notification of notifications">
+      <ion-avatar item-left>
+        <ion-icon name="albums"></ion-icon>
+      </ion-avatar>
+      <h2>{{notification.heading}}</h2>
+      <p>{{notification.content}}</p>
+      <div item-right class="text-right">
+        <p>{{notification.data}}</p>
+        <small>{{notification.date | date:'shortTime'}}</small>
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Activity
+    </ion-list-header>
+    <ion-item *ngFor="#activityItem of activity">
+      <ion-avatar item-left>
+        <ion-icon name="albums"></ion-icon>
+      </ion-avatar>
+      <h2>{{activityItem.heading}}</h2>
+      <p>{{activityItem.content}}</p>
+      <div item-right class="text-right">
+        <p>{{activityItem.data}}</p>
+        <small>{{activityItem.date | date:'shortTime'}}</small>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

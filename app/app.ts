@@ -1,28 +1,29 @@
-/// <reference path="../typings/tsd.d.ts" />
-
-import {App, Platform} from 'ionic-framework/ionic';
-import {Page1} from './pages/page1/page1';
-import {Page2} from './pages/page2/page2';
-import {Page3} from './pages/page3/page3';
+import {App, Platform, Events} from 'ionic-framework/ionic';
+import {TabsPage} from './pages/tabs/tabs';
+import {PluginManager} from './components/plugin-manager/plugin-manager';
 
 @App({
-  templateUrl: 'build/app.html'
+  directives: [PluginManager],
+  template:
+  `
+  <ion-nav [root]="rootPage"></ion-nav>
+  <plugin-manager></plugin-manager>
+  `,
+  config: {
+    tabbarPlacement: 'bottom'
+  }
 })
 export class MyApp {
 
-  tab1Root: Object;
-  tab2Root: Object;
-  tab3Root: Object;
+  events: Events;
+  rootPage: any = TabsPage;
 
-  constructor(platform: Platform) {
-
-    // this tells the tabs component which Pages
-    // should be each tab's root Page
-    this.tab1Root = Page1;
-    this.tab2Root = Page2;
-    this.tab3Root = Page3;
+  constructor(platform: Platform, events: Events) {
+    this.events = events;
 
     platform.ready().then(() => {
+
+      console.log('MyApp constructed.');
       // Do any necessary cordova or native calls here now that the platform is ready
       if (window.StatusBar) {
         window.StatusBar.show();

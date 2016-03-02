@@ -1,0 +1,9 @@
+{
+  "name": "icv2-hooks",
+  "description": "Dependencies for icv2-hooks",
+  "devDependencies": {
+    "androidmanifest": "^2.0.0",
+    "plist": "^1.2.0"
+  },
+  "private": true
+}

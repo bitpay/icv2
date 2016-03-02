@@ -1,0 +1,16 @@
+plugin-manager {
+  position: absolute;
+  // z-index: 999;
+}
+
+plugin-manager, plugin-manager > iframe {
+  width: 100%;
+  height: 100%;
+}
+
+plugin-manager > iframe {
+  position: absolute;
+  border: 0 none;
+  display: none;
+  // opacity: .1
+}
