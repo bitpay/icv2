@@ -17,6 +17,9 @@ var processes = [
 ];
 
 processes.forEach(function(proc){
+  if(process.platform === 'win32') {
+    proc.command += '.cmd';
+  }
   var single = spawn(proc.command, proc.args, {cwd: proc.cwd});
   single.stdout.on('data', function(data){
     process.stdout.write('[' + proc.args[1] + ']: ' + data.toString('utf8'));
