@@ -22,15 +22,16 @@
   "scripts": {
     "start": "node develop.js",
     "electron": "electron electron.js",
-    "install": "npm run install-tooling; cordova prepare",
-    "install-tooling": "npm run install-hooks; npm run install-starter; npm run install-simserver",
+    "install": "npm run install-tooling && cordova prepare",
+    "install-tooling": "npm run install-hooks && npm run install-starter && npm run install-simserver",
     "install-hooks": "cd tooling/hooks && npm install",
     "install-starter": "cd packaged-plugins/starter && npm install",
     "install-simserver": "cd tooling/simserver && npm install",
     "serve-app": "ionic serve -p 8105 -r 35735",
     "serve-starter": "cd packaged-plugins/starter && ionic serve -b -p 8110 -r 35740",
     "serve-simserver": "node tooling/simserver/proxy.js 8110",
-    "clean": "rm -rf node_modules; rm -rf platforms; rm -rf plugins"
+    "clean": "rm -rf node_modules && rm -rf platforms && rm -rf plugins",
+    "workaround-simsymlinks": "rm -rf app/components/plugin-manager/icv2-plugin-client && rm -rf packaged-plugins/starter/app/icv2-plugin-client && cp -R lib/icv2-plugin-client app/components/plugin-manager/icv2-plugin-client && cp -R lib/icv2-plugin-client packaged-plugins/starter/app/icv2-plugin-client"
   },
   "repository": {
     "type": "git",
