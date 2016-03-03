@@ -16,7 +16,7 @@
     "ghooks": "^1.0.3",
     "strip-sourcemap-loader": "0.0.1",
     "typescript": "1.7.5",
-    "validate-commit-msg": "^2.1.0"
+    "validate-commit-msg": "^2.2.0"
   },
   "name": "icv2",
   "description": "icv2",
@@ -56,9 +56,9 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-     "commit-msg": "validate-commit-msg"
-   },
-   "validate-commit-msg": {
+      "commit-msg": "validate-commit-msg"
+    },
+    "validate-commit-msg": {
       "helpMessage": "\nThis project uses commitizen to document changes. Please try:\nnpm install commitizen -g && git cz\n"
     }
   }
