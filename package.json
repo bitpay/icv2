@@ -23,7 +23,7 @@
     "gulp-watch": "4.3.5",
     "strip-sourcemap-loader": "0.0.1",
     "typescript": "1.8.7",
-    "validate-commit-msg": "^2.1.0",
+    "validate-commit-msg": "^2.3.1",
     "webpack": "1.12.14"
   },
   "name": "icv2",
