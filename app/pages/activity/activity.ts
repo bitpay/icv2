@@ -1,5 +1,5 @@
-import { Page, Events } from 'ionic-framework/ionic';
 import { Activity, DateRange } from '../../components/plugin-manager/icv2-plugin-client/events';
+import { Page, Events } from 'ionic-angular';
 
 @Page({
   templateUrl: 'build/pages/activity/activity.html',

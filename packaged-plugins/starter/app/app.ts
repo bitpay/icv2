@@ -1,4 +1,4 @@
-import {App, Platform} from 'ionic-framework/ionic';
+import {App, Platform} from 'ionic-angular';
 import {LandingPage} from './pages/landing/landing';
 import { Icv2 } from './icv2-plugin-client/icv2';
 import { Activity } from './icv2-plugin-client/events';

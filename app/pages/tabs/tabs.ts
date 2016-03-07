@@ -1,4 +1,4 @@
-import {Page} from 'ionic-framework/ionic';
+import {Page} from 'ionic-angular';
 
 import {ActivityPage} from '../activity/activity';
 import {ScanPage} from '../scan/scan';

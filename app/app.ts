@@ -1,4 +1,4 @@
-import {App, Platform, Events} from 'ionic-framework/ionic';
+import {App, Platform, Events} from 'ionic-angular';
 import {TabsPage} from './pages/tabs/tabs';
 import {PluginManager} from './components/plugin-manager/plugin-manager';
 

@@ -3,7 +3,7 @@
     "angular2": "2.0.0-beta.6",
     "es6-promise": "3.0.2",
     "es6-shim": "0.33.13",
-    "ionic-angular": "2.0.0-beta.2",
+    "ionic-angular": "2.0.0-beta.3",
     "ionicons": "3.0.0-alpha.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
@@ -12,11 +12,17 @@
   "devDependencies": {
     "awesome-typescript-loader": "0.15.10",
     "cz-conventional-changelog": "^1.1.5",
+    "del": "2.2.0",
     "electron-prebuilt": "^0.34.1",
     "ghooks": "^1.0.3",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "2.2.0",
+    "gulp-watch": "4.3.5",
     "strip-sourcemap-loader": "0.0.1",
     "typescript": "1.7.5",
-    "validate-commit-msg": "^2.1.0"
+    "validate-commit-msg": "^2.1.0",
+    "webpack": "1.12.14"
   },
   "name": "icv2",
   "description": "icv2",
@@ -56,10 +62,13 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-     "commit-msg": "validate-commit-msg"
-   },
-   "validate-commit-msg": {
+      "commit-msg": "validate-commit-msg"
+    },
+    "validate-commit-msg": {
       "helpMessage": "\nThis project uses commitizen to document changes. Please try:\nnpm install commitizen -g && git cz\n"
     }
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
