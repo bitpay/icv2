@@ -25,7 +25,7 @@ module.exports = {
           resolveGlobs: false,
           externals: ['typings/browser.d.ts']
         },
-        include: path.resolve('app'),
+        // include: path.resolve('app'),
         exclude: /node_modules/
       },
       {

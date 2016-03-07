@@ -25,7 +25,7 @@ module.exports = {
           resolveGlobs: false,
           externals: ['typings/browser.d.ts']
         },
-        include: path.resolve('app'),
+        // include: path.resolve('app'),
         exclude: /node_modules/
       },
       {
@@ -45,7 +45,6 @@ module.exports = {
     alias: {
       'angular2': path.resolve('node_modules/angular2')
     },
-    // extensions: ['', '.js', '.ts']
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.js', '.ts']
   }
 };

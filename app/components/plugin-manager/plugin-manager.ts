@@ -1,7 +1,6 @@
 import { Component, ElementRef } from "angular2/core";
 import { PluginInstanceHandler } from './plugin-instance-handler';
-import { Activity, DateRange } from './icv2-plugin-client/events';
-import { Events } from 'ionic-framework/ionic';
+import { Activity, DateRange } from 'icv2-plugin-client/events';
 import { Events } from 'ionic-angular';
 
 @Component({

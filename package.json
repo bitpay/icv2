@@ -32,15 +32,18 @@
     "start": "node develop.js",
     "electron": "electron electron.js",
     "install": "npm run install-tooling && cordova prepare",
-    "install-tooling": "npm run install-hooks && npm run install-starter && npm run install-simserver",
+    "install-tooling": "npm run link-plugin-client && npm run install-hooks && npm run install-starter && npm run install-simserver && npm run install-icv2",
+    "link-plugin-client": "cd lib/icv2-plugin-client && npm link",
     "install-hooks": "cd tooling/hooks && npm install",
-    "install-starter": "cd packaged-plugins/starter && npm install",
+    "install-starter": "cd packaged-plugins/starter && npm install && npm link icv2-plugin-client",
     "install-simserver": "cd tooling/simserver && npm install",
+    "install-icv2": "npm run install-icv2-plugin-client",
+    "install-icv2-plugin-client": "npm link icv2-plugin-client",
     "serve-app": "ionic serve -p 8105 -r 35735",
     "serve-starter": "cd packaged-plugins/starter && ionic serve -b -p 8110 -r 35740",
     "serve-simserver": "node tooling/simserver/proxy.js 8110",
     "clean": "rm -rf node_modules && rm -rf platforms && rm -rf plugins",
-    "workaround-simsymlinks": "rm -rf app/components/plugin-manager/icv2-plugin-client && rm -rf packaged-plugins/starter/app/icv2-plugin-client && cp -R lib/icv2-plugin-client app/components/plugin-manager/icv2-plugin-client && cp -R lib/icv2-plugin-client packaged-plugins/starter/app/icv2-plugin-client"
+    "clean-tsc": "find app lib -name '*.js*' -exec rm {} \\;"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 // TODO: use ExceptionHandler
-import { Activity, DateRange } from './icv2-plugin-client/events';
-import { PluginApiMessage, ReadyMessage, ActivityMessage } from './icv2-plugin-client/plugin-api-messages';
+import { Activity, DateRange } from 'icv2-plugin-client/events';
+import { PluginApiMessage, ReadyMessage, ActivityMessage } from 'icv2-plugin-client/plugin-api-messages';
 
 // This class is responsible for communicating with plugins, enforcing
 // permissions, and sanatizing all plugin communications.
