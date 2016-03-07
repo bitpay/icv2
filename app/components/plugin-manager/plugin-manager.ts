@@ -17,7 +17,7 @@ export class PluginManager {
   // for performance testing
   private _debug = true;
   private _initTime: number;
-  private _pluginsToMock = 3;
+  private _pluginsToMock = 1;
   private _readyMessagesReceived = 0;
   private _pluginsReady = false;
 
@@ -64,8 +64,6 @@ export class PluginManager {
       }
     }
     if(senderId) {
-      console.log('Received message from plugin ' + senderId + ', passed to handler:');
-      console.log(event.data);
       this._PluginInstanceHandlers[senderId].handleMessageFromPlugin(event);
     } else {
       console.error('Security Alert: A Plugin API message was received from an unknown source.');
@@ -96,7 +94,6 @@ export class PluginManager {
   private _listenForActivityRequests(){
     this.events.subscribe('activity:requests', (args: DateRange[]) => {
       var dateRange = args[0];
-      console.log('PluginManager received a request for activity dateRange – begin: ' + dateRange.begin + ' end: ' + dateRange.end);
       for(var pluginId in this._PluginInstanceHandlers){
         this._PluginInstanceHandlers[pluginId].getActivity(dateRange, (response: Activity[]) => {
           this.events.publish('activity:responses', ...response);

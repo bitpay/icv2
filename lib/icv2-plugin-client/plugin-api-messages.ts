@@ -19,7 +19,6 @@ export class PluginApiMessage {
   // deserialize()/constructors should validate/sanitize data
   static deserialize(event: MessageEvent){
     var data = event.data;
-    console.log(data);
     if(typeof data !== 'undefined' && typeof data.type === 'string'){
       switch(data.type){
         case ReadyMessage.type:

@@ -25,7 +25,6 @@ export class ActivityPage {
     // just get last 2 days (for demo)
     var begin = end - 1000 * 60 * 60 * 24 * 2;
     var range = new DateRange(new Date(begin), new Date(end));
-    console.log('ActivityPage sent request for activity dateRange – begin: ' + range.begin + ' end: ' + range.end);
     this.events.publish('activity:requests', range);
   }
 

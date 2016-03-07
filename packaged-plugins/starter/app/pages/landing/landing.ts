@@ -5,6 +5,5 @@ import {Page} from 'ionic-angular';
 })
 export class LandingPage {
   constructor() {
-    console.log('icv2-plugin landing page constructed.');
   }
 }

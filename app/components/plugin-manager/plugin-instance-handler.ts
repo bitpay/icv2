@@ -16,22 +16,18 @@ export class PluginInstanceHandler {
   private _sendRequest(requestContents: PluginApiMessage, callback: (response: PluginApiMessage) => any){
     var request = new PendingRequest(requestContents, this._outgoingRequestStack, callback);
     this._outgoingRequestStack.push(request);
-    console.log('pushed request to stack');
     if(this.ready){
-      console.log('sent request immediately');
       request.send(this.iframe);
     }
   }
 
   getActivity(dateRange: DateRange, callback: (response: Activity[]) => any){
-    console.log('Handler ' + name + ' received request for activity dateRange – begin: ' + dateRange.begin + ' end: ' + dateRange.end);
     var activityRequest = new ActivityMessage({
       begin: dateRange.begin,
       end: dateRange.end
     });
     this._sendRequest(activityRequest, (response: PluginApiMessage) => {
       if(response instanceof ActivityMessage){
-        console.log('Passing Activity[] to getActivity callback.');
         callback(response.activity);
       } else {
         throw TypeError('getActivity received non-ActivityMessage response.')
@@ -40,8 +36,6 @@ export class PluginInstanceHandler {
   }
 
   handleMessageFromPlugin(event: MessageEvent){
-    console.log('handling message from plugin');
-    console.log(event);
     var message: PluginApiMessage;
     try{
       // validate and sanatize message
@@ -51,10 +45,7 @@ export class PluginInstanceHandler {
     }
 
     if(!this.ready){
-      console.log('plugin not ready, checking if ReadyMessage');
-      console.log(message);
       if(message instanceof ReadyMessage){
-        console.log('response is instanceof ReadyMessage');
         this.ready = true;
         this._flushOutgoingRequestStack();
       }
@@ -76,12 +67,6 @@ export class PluginInstanceHandler {
   }
 
   private _handleResponse(request: PendingRequest, response: PluginApiMessage){
-    console.log('Message is a response.');
-    console.log('pending request:');
-    console.log(request);
-    console.log('response:');
-    console.log(response);
-
     // check if response matches request type
     if(Object.getPrototypeOf(request.message) !== Object.getPrototypeOf(response)){
       throw new TypeError('The plugin returned a message of the wrong type for request: ' + request.requestId);
@@ -92,7 +77,6 @@ export class PluginInstanceHandler {
 
   // fire all pending reqests when plugin is ready
   private _flushOutgoingRequestStack(){
-    console.log('flushing stack');
     this._outgoingRequestStack.forEach((req: PendingRequest) => {
       req.send(this.iframe);
     });
