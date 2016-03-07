@@ -1,8 +1,10 @@
 import { Page, Events } from 'ionic-angular';
 import { Activity, DateRange } from 'icv2-plugin-client/events';
+import { TimeAgoPipe } from 'angular2-moment';
 
 @Page({
   templateUrl: 'build/pages/activity/activity.html',
+  pipes: [TimeAgoPipe]
 })
 export class ActivityPage {
 

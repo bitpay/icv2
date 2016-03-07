@@ -15,7 +15,7 @@
       <p>{{notification.content}}</p>
       <div item-right class="text-right">
         <p>{{notification.data}}</p>
-        <small>{{notification.date | date:'shortTime'}}</small>
+        <small>{{notification.date | amTimeAgo}}</small>
       </div>
     </ion-item>
     <ion-list-header>
@@ -29,7 +29,7 @@
       <p>{{activityItem.content}}</p>
       <div item-right class="text-right">
         <p>{{activityItem.data}}</p>
-        <small>{{activityItem.date | date:'shortTime'}}</small>
+        <small>{{activityItem.date | amTimeAgo}}</small>
       </div>
     </ion-item>
   </ion-list>
