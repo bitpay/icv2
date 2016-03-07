@@ -4,17 +4,23 @@
     <description>The secure, shared bitcoin wallet.</description>
     <author email="copay@bitpay" href="http://bitpay.com/">BitPay</author>
     <content src="index.html" />
+    <engine name="ios" spec="~4.0.1" />
+    <engine name="android" spec="~5.1.1" />
+    <engine name="windows" spec="~4.3.1" />
+    <plugin name="com.ionic.keyboard" spec="~1.0.8" />
+    <plugin name="cordova-plugin-console" spec="~1.0.1" />
+    <plugin name="cordova-plugin-device" spec="~1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="~2.1.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.0.0" />
     <access origin="*" />
-
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-
     <hook src="tooling/hooks/all/ionic_add_platform_class.js" type="after_prepare" />
-
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -47,7 +53,6 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
-
     <platform name="android">
         <allow-intent href="market:*" />
         <hook src="tooling/hooks/android/add-custom-urls-to-android-manifest.js" type="after_prepare" />
@@ -70,23 +75,13 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
-
     <platform name="windows">
         <preference name="windows-target-version" value="10.0" />
     </platform>
-
-    <plugin name="com.ionic.keyboard" spec="~1.0.8" />
-    <plugin name="cordova-plugin-console" spec="~1.0.1" />
-    <plugin name="cordova-plugin-device" spec="~1.0.1" />
-    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-    <plugin name="cordova-plugin-splashscreen" spec="~2.1.0" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.0.0" />
-
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="StatusBarStyle" value="default" />
-
 </widget>
