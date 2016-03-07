@@ -52,9 +52,11 @@ simulatedPluginServer.listen(13000, function () {
 });
 
 pluginCSPReportingServer.post('/report', jsonParser, function(req, res){
-  var blockedUri = req.body['csp-report']['blocked-uri'];
-  var violatedDirective = req.body['csp-report']['violated-directive'];
-  console.log(chalk.red('A plugin security violation was blocked. URI: ' + blockedUri + ' – Violated directive: ' + violatedDirective));
+  if(req.body['csp-report']){
+    var blockedUri = req.body['csp-report']['blocked-uri'];
+    var violatedDirective = req.body['csp-report']['violated-directive'];
+    console.log(chalk.red('A plugin security violation was blocked. URI: ' + blockedUri + ' – Violated directive: ' + violatedDirective));
+  }
   res.sendStatus(200);
 });
 
