@@ -43,7 +43,7 @@
     "serve-app": "ionic serve -p 8105 -r 35735",
     "serve-starter": "cd packaged-plugins/starter && ionic serve -b -p 8110 -r 35740",
     "serve-simserver": "node tooling/simserver/proxy.js 8110",
-    "clean": "rm -rf node_modules && rm -rf platforms && rm -rf plugins",
+    "clean": "git clean -dfx",
     "clean-tsc": "find app lib -name '*.js*' -exec rm {} \\;"
   },
   "repository": {
