@@ -45,6 +45,6 @@ module.exports = {
     alias: {
       'angular2': path.resolve('node_modules/angular2')
     },
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.js', '.ts']
   }
 };
