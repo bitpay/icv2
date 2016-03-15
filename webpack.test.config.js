@@ -1,5 +1,6 @@
 'use strict';
 var path = require('path');
+var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 module.exports = {
   devtool: 'source-map',
@@ -31,6 +32,18 @@ module.exports = {
         test: /\.js$/,
         include: path.resolve('node_modules/angular2'),
         loader: 'strip-sourcemap'
+      }
+    ],
+    postLoaders: [
+      // instrument only testing sources with Istanbul
+      {
+        test: /\.(js|ts)$/,
+        include: path.resolve('app'),
+        loader: 'istanbul-instrumenter-loader',
+        exclude: [
+          /\.(e2e|spec)\.ts$/,
+          /node_modules/
+        ]
       }
     ],
     noParse: [

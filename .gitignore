@@ -17,3 +17,5 @@ lib/**/*.js
 lib/**/*.js.map
 
 typings/main*
+
+coverage
