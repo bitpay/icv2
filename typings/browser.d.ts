@@ -19,4 +19,5 @@
 /// <reference path="browser/ambient/cordova-plugin-qrscanner/cordova-plugin-qrscanner.d.ts" />
 /// <reference path="browser/ambient/cordova/cordova.d.ts" />
 /// <reference path="browser/ambient/es6-shim/es6-shim.d.ts" />
+/// <reference path="browser/ambient/jasmine/index.d.ts" />
 /// <reference path="browser/definitions/moment/moment.d.ts" />
