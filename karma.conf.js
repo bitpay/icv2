@@ -1,6 +1,4 @@
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.config.js');
-
   config.set({
 
     // base path that will be used to resolve all patterns (e.g. files, exclude)
@@ -21,15 +19,12 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: { 'spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
 
-    // Webpack Config at ./webpack.test.config.js
-    webpack: testWebpackConfig,
+    webpack: require('./webpack.test.config.js'),
 
     coverageReporter: {
       dir : 'coverage/',
       reporters: [
-        { type: 'text-summary' },
-        { type: 'json' },
-        { type: 'html' }
+        { type: 'json', subdir: 'unmapped-json' }
       ]
     },
 
