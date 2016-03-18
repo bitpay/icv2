@@ -1,6 +1,6 @@
 language: node_js
 node_js:
   - '4'
-  - 'node'
+  # - 'node'
 after_success:
 - if node --version == 4*; then npm run coveralls; fi
