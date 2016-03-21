@@ -13,7 +13,7 @@
     "icv2-plugin-client": "file:./lib/icv2-plugin-client"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "0.15.10",
+    "awesome-typescript-loader": "0.16.2",
     "cordova": "^6.0.0",
     "coveralls": "^2.11.8",
     "cz-conventional-changelog": "^1.1.5",
