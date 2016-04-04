@@ -9,7 +9,7 @@
     "ionicons": "3.0.0-alpha.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.6",
+    "zone.js": "0.6.9",
     "icv2-plugin-client": "file:./lib/icv2-plugin-client"
   },
   "devDependencies": {
