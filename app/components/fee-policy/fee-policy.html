@@ -1,0 +1,6 @@
+<div [ngSwitch]="policy">
+  <span *ngSwitchWhen="policies.Priority">Priority</span>
+  <span *ngSwitchWhen="policies.Normal">Normal</span>
+  <span *ngSwitchWhen="policies.Economy">Economy</span>
+  <span *ngSwitchDefault>Unrecognized</span>
+</div>
