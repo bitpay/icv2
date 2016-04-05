@@ -1,6 +1,7 @@
-import { Page, Events } from 'ionic-angular';
-import { Activity, DateRange } from 'icv2-plugin-client/events';
+import { Page, Events, NavPush, NavController } from 'ionic-angular';
+import { Activity, DateRange } from 'icv2-plugin-client';
 import { TimeAgoPipe } from 'angular2-moment';
+import { ProfileSettingsPage } from '../profile-settings/profile-settings';
 
 @Page({
   templateUrl: 'build/pages/activity/activity.html',
@@ -11,12 +12,22 @@ export class ActivityPage {
   events: Events;
   notifications: Activity[] = [];
   activity: Activity[] = [];
+  nav: NavController;
 
-  constructor(events: Events) {
+  constructor(events: Events, nav: NavController) {
     this.events = events;
     console.log('ActivityPage constructor called.');
     this.listenForActivityResponses();
     this.activityPageReady();
+    this.nav = nav;
+  }
+
+  // ngOnInit(){
+  //   this.settings();
+  // }
+
+  settings(){
+    this.nav.push(ProfileSettingsPage);
   }
 
   activityPageReady(){

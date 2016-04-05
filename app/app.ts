@@ -1,9 +1,14 @@
+import 'es6-shim';
 import {App, Platform, Events} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import {PluginManager} from './components/plugin-manager/plugin-manager';
+import { PluginManager } from './components/components';
+import { ProfileProvider } from './providers/providers';
+
 
 @App({
   directives: [PluginManager],
+  providers: [ProfileProvider],
   template:
   `
   <ion-nav [root]="rootPage"></ion-nav>
@@ -22,13 +27,11 @@ export class MyApp {
     this.events = events;
 
     platform.ready().then(() => {
-
       console.log('MyApp constructed.');
-      // Do any necessary cordova or native calls here now that the platform is ready
-      if (window.StatusBar) {
-        window.StatusBar.show();
-        window.StatusBar.styleDefault();
-      }
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      StatusBar.show();
+      StatusBar.styleDefault();
     });
   }
 }

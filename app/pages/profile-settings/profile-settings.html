@@ -1,0 +1,77 @@
+<ion-navbar *navbar>
+  <ion-title>Profile Settings</ion-title>
+  <ion-buttons end>
+    <button>
+      <ion-icon name="heart"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content>
+  <ion-item-group>
+
+    <ion-item-divider light>Preferences</ion-item-divider>
+    <ion-item>
+      Notifications
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Exchanges
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Address Book
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Language
+      <ion-note item-right>{{currentProfile.configuration.language}}</ion-note>
+    </ion-item>
+    <ion-item>
+      Display Unit
+      <ion-note item-right>{{currentProfile.configuration.displayUnit}}</ion-note>
+    </ion-item>
+    <ion-item>
+      Value Estimation Currency
+      <ion-note item-right>{{currentProfile.configuration.valueEstimationCurrency}}</ion-note>
+    </ion-item>
+    <ion-item>
+      Bitcoin Network Fee Policy
+      <ion-note item-right><fee-policy [policy]="currentProfile.configuration.feePolicy"></fee-policy></ion-note>
+    </ion-item>
+
+    <ion-item-divider light>Security &amp; Privacy</ion-item-divider>
+    <ion-item>
+      Add a pin code
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Add a password
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Enable Touch ID
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Backups
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      BWS Node
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Side Wallets
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Archived Wallets
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item>
+      Show Private Wallets
+    </ion-item>
+
+  </ion-item-group>
+</ion-content>
