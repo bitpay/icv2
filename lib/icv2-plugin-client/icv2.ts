@@ -3,7 +3,6 @@
 
 import { Activity } from './events';
 import { PluginApiMessage, ReadyMessage, ActivityMessage } from './plugin-api-messages';
-// TODO: can we export Activity from this file to simplify usage?
 
 export class Icv2 {
   private _host = window.parent;
