@@ -2,8 +2,8 @@ import 'es6-shim';
 import {App, Platform, Events} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import { PluginManager } from './components/components';
-import { ProfileProvider } from './providers/providers';
+import { PluginManager } from './components';
+import { ProfileProvider } from './providers';
 
 
 @App({

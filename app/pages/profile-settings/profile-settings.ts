@@ -1,6 +1,6 @@
 import { Page } from 'ionic-angular';
-import { Profile, ProfileProvider } from '../../providers/profile/profile';
-import { FeePolicy } from '../../components/components';
+import { Profile, ProfileProvider } from '../../providers';
+import { FeePolicy } from '../../components';
 
 @Page({
   templateUrl: 'build/pages/profile-settings/profile-settings.html',
