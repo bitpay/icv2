@@ -10,7 +10,8 @@
   },
   "filesGlob": [
     "**/*.ts",
-    "!node_modules/**/*"
+    "!node_modules/**/*",
+    "!packaged-plugins/*/node_modules/**/*"
   ],
   "exclude": [
     "node_modules",
