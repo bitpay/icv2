@@ -1,9 +1,12 @@
+/// <reference path="../../typings/browser/ambient/es6-shim/index.d.ts" />
+
 export class Activity {
   heading: string;
   content: string;
   data: string;
   date: Date;
-  deeplink: string;
+  id: string;
+  deeplink: boolean;
   notification: boolean;
   constructor(contents: Object){
     Object.assign(this, contents);

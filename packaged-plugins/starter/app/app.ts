@@ -48,7 +48,8 @@ function companyFunds(){
       content: 'Company Funds',
       data: '-1,423,000 bits',
       date: new Date(Date.now() - 1000*60*60*2),
-      deeplink: null,
+      id: '1',
+      deeplink: false,
       notification: true
     }),
     new Activity({
@@ -56,14 +57,16 @@ function companyFunds(){
       content: 'Company Funds',
       data: '-1,423,000 bits',
       date: new Date(Date.now() - 1000*60*60*24*0.8),
-      deeplink: null
+      id: '2',
+      deeplink: false
     }),
     new Activity({
       heading: '2 of 3 Wallet Created',
       content: 'Company Funds',
       data: null,
       date: new Date(Date.now() - 1000*60*60*24*1.5),
-      deeplink: null
+      id: '3',
+      deeplink: false
     })
   ];
   return activity;
@@ -76,14 +79,16 @@ function businessExpenses(){
       content: 'Business Expenses',
       data: '163,500 bits',
       date: new Date(Date.now() - 1000*60*60*5),
-      deeplink: null
+      id: '1',
+      deeplink: false
     }),
     new Activity({
       heading: 'Payment Sent',
       content: 'Business Expenses',
       data: '43,000 bits',
       date: new Date(Date.now() - 1000*60*60*24*0.8),
-      deeplink: null
+      id: '2',
+      deeplink: false
     })
   ];
   return activity;
@@ -96,21 +101,24 @@ function coloredCoins(){
       content: 'Business Assets (2 of 3)',
       data: '13,000 shares',
       date: new Date(Date.now() - 1000*60*60*7),
-      deeplink: null
+      id: '1',
+      deeplink: false
     }),
     new Activity({
       heading: 'Received USD Payment',
       content: 'Business Assets (2 of 3)',
       data: '$12,854.45 USD',
       date: new Date(Date.now() - 1000*60*60*24*0.8),
-      deeplink: null
+      id: '2',
+      deeplink: false
     }),
     new Activity({
       heading: 'Received EUR Payment',
       content: 'Business Assets (2 of 3)',
       data: '$43,691.70 EUR',
       date: new Date(Date.now() - 1000*60*60*24*0.9),
-      deeplink: null
+      id: '3',
+      deeplink: false
     })
   ];
   return activity;
