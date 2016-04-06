@@ -1,5 +1,5 @@
 import { Activity } from 'icv2-plugin-client';
-import { PluginInstance, BitcoinNetworkFeePolicy } from '../../components';
+import { PluginInstance, BitcoinNetworkFeePolicy } from '../../components/components';
 
 export class Profile {
   configuration: ProfileConfiguration;

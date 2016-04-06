@@ -2,8 +2,8 @@ import 'es6-shim';
 import {App, Platform, Events} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import { PluginManager } from './components';
-import { TabsProvider, ProfileProvider } from './providers';
+import { PluginManager } from './components/components';
+import { TabsProvider, ProfileProvider } from './providers/providers';
 
 
 @App({
@@ -27,7 +27,6 @@ export class MyApp {
     this.events = events;
 
     platform.ready().then(() => {
-      console.log('MyApp constructed.');
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.show();

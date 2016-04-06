@@ -20,6 +20,7 @@ export class MyApp {
       var id = window.location.search.split('=')[1];
 
       icv2.ready();
+      console.log('icv2.ready() called for plugin: ' + id);
 
       function sampleResponder(begin: Date, end: Date){
         console.log('fetching activity between ' + begin + 'and' + end);

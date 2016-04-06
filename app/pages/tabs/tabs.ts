@@ -1,6 +1,6 @@
 import { Page } from 'ionic-angular';
-import { ActivityPage, ScanPage, WalletsPage } from '../../pages';
-import { TabsProvider } from '../../providers';
+import { ActivityPage, ScanPage, WalletsPage } from '../../pages/pages';
+import { TabsProvider } from '../../providers/providers';
 
 @Page({
   templateUrl: 'build/pages/tabs/tabs.html'

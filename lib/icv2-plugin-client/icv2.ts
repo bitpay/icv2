@@ -13,7 +13,6 @@ export class Icv2 {
   private _useAsyncActivityResponder: boolean;
 
   constructor() {
-    console.log('icv2 constructed.');
     window.addEventListener('message', this._receiveData.bind(this));
   }
 

@@ -1,15 +1,14 @@
 import {Page} from 'ionic-angular';
-import { } from '../../../components/components';
 import { TabsProvider } from '../../../providers/providers';
-import { SendPage } from './send/send';
-import { RequestPage } from './request/request';
+import { BuyPage } from './buy/buy';
+import { SellPage } from './sell/sell';
 
 @Page({
-  templateUrl: 'build/pages/wallets/send-and-request/send-and-request.html'
+  templateUrl: 'build/pages/wallets/buy-and-sell/buy-and-sell.html'
 })
-export class SendAndRequestPage {
-  SendPage = SendPage;
-  RequestPage = RequestPage;
+export class BuyAndSellPage {
+  BuyPage = BuyPage;
+  SellPage = SellPage;
   TabsProvider: TabsProvider;
 
   constructor(TabsProvider: TabsProvider) {
