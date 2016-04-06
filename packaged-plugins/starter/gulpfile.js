@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
     gulpWatch = require('gulp-watch'),
     del = require('del'),
+    runSequence = require('run-sequence'),
     argv = process.argv;
 
 
@@ -28,23 +29,35 @@ gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
  * changes, but you are of course welcome (and encouraged) to customize your
  * build however you see fit.
  */
-var build = require('ionic-gulp-webpack');
+var buildWebpack = require('ionic-gulp-webpack');
 var buildSass = require('ionic-gulp-sass-build');
 var copyHTML = require('ionic-gulp-html-copy');
 var copyFonts = require('ionic-gulp-fonts-copy');
 var copyScripts = require('ionic-gulp-scripts-copy');
 
-gulp.task('watch', ['sass', 'html', 'fonts', 'scripts'], function(){
-  gulpWatch('app/**/*.scss', function(){ gulp.start('sass'); });
-  gulpWatch('app/**/*.html', function(){ gulp.start('html'); });
-  return build({ watch: true });
+gulp.task('watch', ['clean'], function(done){
+  runSequence(
+    ['sass', 'html', 'fonts', 'scripts'],
+    function(){
+      gulpWatch('app/**/*.scss', function(){ gulp.start('sass'); });
+      gulpWatch('app/**/*.html', function(){ gulp.start('html'); });
+      buildWebpack({ watch: true }).on('end', done);
+    }
+  );
 });
 
-gulp.task('build', ['sass', 'html', 'fonts', 'scripts'], build);
+gulp.task('build', ['clean'], function(done){
+  runSequence(
+    ['sass', 'html', 'fonts', 'scripts'],
+    function(){
+      buildWebpack().on('end', done);
+    }
+  );
+});
 gulp.task('sass', buildSass);
 gulp.task('html', copyHTML);
 gulp.task('fonts', copyFonts);
 gulp.task('scripts', copyScripts);
-gulp.task('clean', function(done){
-  del('www/build', done);
+gulp.task('clean', function(){
+  return del('www/build');
 });
