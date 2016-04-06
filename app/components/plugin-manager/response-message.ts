@@ -2,7 +2,7 @@ export class ResponseMessage {
   type = 'undefined';
   static isInstance(e: MessageEvent){
     var content = e.data;
-    if(typeof content === 'string' && content === type){
+    if(typeof content === 'string' && content === this.prototype.type){
       return true;
     }
     return false;
