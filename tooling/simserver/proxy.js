@@ -18,7 +18,7 @@ if(typeof port === 'undefined'){
 }
 
 var localPluginUrl = 'http://localhost:' + port;
-var exceptions = ['http://localhost:35730', 'ws://localhost:35730']; // for livereload, etc.
+var exceptions = ['http://localhost:35730', 'ws://localhost:35730', 'http://localhost:35740', 'ws://localhost:35740']; // for livereload, etc.
 var CSPViolationUri = 'http://localhost:12999/report';
 
 // lock down the CSP for simulatedPluginServer

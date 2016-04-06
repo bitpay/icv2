@@ -1,9 +1,6 @@
-import {Page} from 'ionic-angular';
-
-import {ActivityPage} from '../activity/activity';
-import {ScanPage} from '../scan/scan';
-import {WalletsPage} from '../wallets/wallets';
-
+import { Page } from 'ionic-angular';
+import { ActivityPage, ScanPage, WalletsPage } from '../../pages';
+import { TabsProvider } from '../../providers';
 
 @Page({
   templateUrl: 'build/pages/tabs/tabs.html'
@@ -14,7 +11,11 @@ export class TabsPage {
   tab2Root: any = ScanPage;
   tab3Root: any = WalletsPage;
 
-  constructor() {
-    console.log('TabsPage constructor called.');
+  currentState: boolean;
+
+  constructor(TabsProvider: TabsProvider) {
+    TabsProvider.currentState.subscribe((state: boolean) => {
+      this.currentState = state;
+    });
   }
 }

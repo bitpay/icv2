@@ -18,7 +18,7 @@ export class PluginManager {
   // for performance testing
   private _debug = true;
   private _initTime: number;
-  private _pluginsToMock = 1;
+  private _pluginsToMock = 3;
   private _readyMessagesReceived = 0;
   private _pluginsReady = false;
 

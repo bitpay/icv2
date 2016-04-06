@@ -3,12 +3,12 @@ import {App, Platform, Events} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
 import { PluginManager } from './components';
-import { ProfileProvider } from './providers';
+import { TabsProvider, ProfileProvider } from './providers';
 
 
 @App({
   directives: [PluginManager],
-  providers: [ProfileProvider],
+  providers: [TabsProvider, ProfileProvider],
   template:
   `
   <ion-nav [root]="rootPage"></ion-nav>
