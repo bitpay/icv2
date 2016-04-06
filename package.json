@@ -40,6 +40,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.7.0",
+    "pre-commit": "^1.1.2",
     "remap-istanbul": "^0.5.1",
     "run-sequence": "^1.1.5",
     "strip-sourcemap-loader": "0.0.1",
@@ -65,9 +66,9 @@
     "serve-simserver": "node tooling/simserver/proxy.js 8110",
     "clean": "git clean -dfx",
     "clean-tsc": "find app lib -name '*.js' -exec rm {} \\; && find app lib -name '*.js.map' -exec rm {} \\;",
-    "test": "tsc && karma start",
+    "test": "echo 'Running Tests:' && karma start && tsc && npm run clean-tsc",
     "watch:test": "karma start --auto-watch --no-single-run",
-    "coverage": "npm run test && npm run map-coverage && npm run clean-tsc",
+    "coverage": "tsc && karma start && npm run map-coverage && npm run clean-tsc",
     "map-coverage": "remap-istanbul -i coverage/unmapped-json/coverage-final.json -o coverage/report-html -t html && remap-istanbul -i coverage/unmapped-json/coverage-final.json -o coverage/lcov.info -t lcovonly && remap-istanbul -i coverage/unmapped-json/coverage-final.json -o coverage/report.json -t json && remap-istanbul -i coverage/unmapped-json/coverage-final.json -t text-summary -o coverage/report-summary.txt && cat coverage/report-summary.txt && echo ''",
     "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls"
   },
@@ -97,6 +98,7 @@
       "helpMessage": "\nThis project uses commitizen to document changes. Please try:\nnpm install commitizen -g && git cz\n"
     }
   },
+  "pre-commit": "coverage",
   "engines": {
     "node": ">=4"
   }
