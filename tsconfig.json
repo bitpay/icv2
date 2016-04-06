@@ -5,16 +5,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "inlineSourceMap" :false,
+    "inlineSourceMap": false,
     "inlineSources": false
   },
   "filesGlob": [
-    "**/*.ts",
-    "!node_modules/**/*",
-    "!packaged-plugins/*/node_modules/**/*"
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules",
+    "packaged-plugins/starter/node_modules",
     "typings/main",
     "typings/main.d.ts"
   ],
