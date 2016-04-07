@@ -11,3 +11,15 @@ export class TabsProvider {
     this.currentState.next(false);
   }
 }
+
+export function hideTabs() {
+  return function(cls: any) {
+    cls.prototype.onPageWillEnter = function() {
+      this.tabsProvider.hideTabs();
+    };
+    cls.prototype.onPageWillLeave = function() {
+      this.tabsProvider.showTabs();
+    };
+    return cls;
+  }
+}

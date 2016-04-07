@@ -1,3 +1,3 @@
 export { Profile, ProfileProvider } from './profile';
 export { ActivityProvider } from './activity';
-export { TabsProvider } from './tabs';
+export { TabsProvider, hideTabs } from './tabs';

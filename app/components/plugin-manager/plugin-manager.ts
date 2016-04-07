@@ -67,7 +67,8 @@ export class PluginManager {
     if(senderId) {
       this._PluginInstanceHandlers[senderId].handleMessageFromPlugin(event);
     } else {
-      console.error('Security Alert: A Plugin API message was received from an unknown source.');
+      console.error('Security Alert: A Plugin API message was received from an unknown source. Contents: ');
+      console.log(event);
     }
 
     // for performance testing

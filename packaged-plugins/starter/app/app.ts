@@ -1,7 +1,6 @@
 import {App, Platform} from 'ionic-angular';
 import {LandingPage} from './pages/landing/landing';
-import { Icv2 } from 'icv2-plugin-client/icv2';
-import { Activity } from 'icv2-plugin-client/events';
+import { Icv2, Activity } from 'icv2-plugin-client';
 
 @App({
   template: '<ion-nav [root]="rootPage"></ion-nav>',

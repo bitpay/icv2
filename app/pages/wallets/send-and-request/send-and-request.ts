@@ -1,5 +1,4 @@
 import {Page} from 'ionic-angular';
-import { } from '../../../components/components';
 import { TabsProvider } from '../../../providers/providers';
 import { SendPage } from './send/send';
 import { RequestPage } from './request/request';

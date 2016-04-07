@@ -65,7 +65,7 @@
     "serve-starter": "cd packaged-plugins/starter && ionic serve -b -p 8110 -r 35740",
     "serve-simserver": "node tooling/simserver/proxy.js 8110",
     "clean": "git clean -dfx",
-    "clean-tsc": "find app lib -name '*.js' -exec rm {} \\; && find app lib -name '*.js.map' -exec rm {} \\;",
+    "clean-tsc": "find app lib packaged-plugins/starter/app -name '*.js' -exec rm {} \\; && find app lib packaged-plugins/starter/app -name '*.js.map' -exec rm {} \\;",
     "test": "echo 'Running Tests:' && karma start && tsc && npm run clean-tsc",
     "watch:test": "karma start --auto-watch --no-single-run",
     "coverage": "tsc && karma start && npm run map-coverage && npm run clean-tsc",
