@@ -1,17 +1,16 @@
 import 'es6-shim';
-import {App, Platform, Events} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
+import { App, Platform, IonicApp } from 'ionic-angular';
+import { StatusBar } from 'ionic-native';
+import { TabsPage } from './pages/tabs/tabs';
 import { PluginManager } from './components/components';
-import { TabsProvider, ProfileProvider } from './providers/providers';
-
+import { RootNavigationProvider, ProfileProvider } from './providers/providers';
 
 @App({
   directives: [PluginManager],
-  providers: [TabsProvider, ProfileProvider],
+  providers: [ProfileProvider, RootNavigationProvider],
   template:
   `
-  <ion-nav [root]="rootPage"></ion-nav>
+  <ion-nav id="rootNav" [root]="rootPage"></ion-nav>
   <plugin-manager></plugin-manager>
   `,
   config: {
@@ -19,18 +18,18 @@ import { TabsProvider, ProfileProvider } from './providers/providers';
   }
 })
 export class MyApp {
+  rootPage: any;
 
-  events: Events;
-  rootPage: any = TabsPage;
-
-  constructor(platform: Platform, events: Events) {
-    this.events = events;
+  constructor(public app: IonicApp, platform: Platform, public rootNav: RootNavigationProvider) {
+    this.rootPage = TabsPage;
 
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       StatusBar.show();
       StatusBar.styleDefault();
     });
   }
+
+ ngAfterViewInit() {
+   this.rootNav.setRootNav(this.app.getComponent('rootNav'));
+ }
 }

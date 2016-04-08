@@ -1,7 +1,5 @@
-<div [ngClass]="{'hide-tabs': !currentState}">
-  <ion-tabs [selectedIndex]="2">
-    <ion-tab [root]="tab1Root" tabTitle="Activity" tabIcon="pulse"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Scan" tabIcon="qr-scanner"></ion-tab>
-    <ion-tab [root]="tab3Root" tabTitle="Wallets" tabIcon="albums"></ion-tab>
-  </ion-tabs>
-</div>
+<ion-tabs [selectedIndex]="2">
+  <ion-tab [root]="tab1Root" tabTitle="Activity" tabIcon="pulse"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Scan" tabIcon="qr-scanner"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Wallets" tabIcon="albums"></ion-tab>
+</ion-tabs>

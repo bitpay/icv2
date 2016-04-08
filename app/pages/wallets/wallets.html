@@ -6,10 +6,10 @@
     </button>
   </ion-buttons>
   <ion-buttons end>
-    <button [navPush]="BuyAndSellPage">
+    <button (click)="buyAndSell()">
       <ion-icon name="alert"></ion-icon>
     </button>
-    <button [navPush]="SendAndRequestPage">
+    <button (click)="sendAndRequest()">
       <ion-icon name="send"></ion-icon>
     </button>
   </ion-buttons>

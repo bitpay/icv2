@@ -1,19 +1,25 @@
 import { it } from 'angular2/testing';
-import { Platform, Events } from 'ionic-angular';
+import { NgZone } from 'angular2/core';
+import { Platform, IonicApp, Config, ClickBlock } from 'ionic-angular';
 import { MyApp } from './app';
+import { RootNavigationProvider } from './providers/providers';
 
 describe('App', () => {
 
   let myApp;
 
   beforeEach(() => {
+    let ionicApp = new IonicApp(
+      new Config(),
+      new ClickBlock(),
+      new NgZone({enableLongStackTrace: true})
+    );
     let platform = new Platform();
-    let events = new Events();
-    myApp = new MyApp(platform, events);
+    let rootNav = new RootNavigationProvider();
+    myApp = new MyApp(ionicApp, platform, rootNav);
   });
 
   it('should initialize the app', () => {
-    let myApp = new MyApp(new Platform(), new Events());
     expect(myApp).not.toBeNull();
   });
 
