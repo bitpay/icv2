@@ -1,7 +1,7 @@
 <ion-navbar *navbar>
   <ion-title>Profile Settings</ion-title>
   <ion-buttons end>
-    <button>
+    <button [navPush]="FeedbackPage">
       <ion-icon name="heart"></ion-icon>
     </button>
   </ion-buttons>
@@ -15,11 +15,11 @@
       Notifications
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="ExchangesPage">
       Exchanges
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="AddressBookPage">
       Address Book
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
@@ -41,36 +41,37 @@
     </ion-item>
 
     <ion-item-divider light>Security &amp; Privacy</ion-item-divider>
-    <ion-item>
+    <ion-item [navPush]="PinCodePage">
       Add a pin code
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="PasswordPage">
       Add a password
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="FingerprintPage">
       Enable Touch ID
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="BackupsPage">
       Backups
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="BWSNodePage">
       BWS Node
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="SideWalletsPage">
       Side Wallets
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [navPush]="ArchivedWalletsPage">
       Archived Wallets
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
     <ion-item>
-      Show Private Wallets
+      <ion-label>Show Private Wallets</ion-label>
+      <ion-checkbox checked="false"></ion-checkbox>
     </ion-item>
 
   </ion-item-group>
