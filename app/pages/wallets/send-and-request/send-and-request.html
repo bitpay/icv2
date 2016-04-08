@@ -8,6 +8,6 @@
 </ion-navbar>
 
 <ion-content>
-  <button (click)="request()">Request</button>
-  <button (click)="send()">Send</button>
+  <button [navPush]="RequestPage">Request</button>
+  <button [navPush]="SendPage">Send</button>
 </ion-content>
