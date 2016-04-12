@@ -44,7 +44,7 @@
     "remap-istanbul": "^0.5.1",
     "run-sequence": "^1.1.5",
     "strip-sourcemap-loader": "0.0.1",
-    "typescript": "1.8.9",
+    "typescript": "1.8.10",
     "validate-commit-msg": "^2.4.1",
     "webpack": "1.12.14"
   },
