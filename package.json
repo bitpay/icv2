@@ -41,7 +41,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.7.0",
     "pre-commit": "^1.1.2",
-    "remap-istanbul": "^0.5.1",
+    "remap-istanbul": "^0.6.3",
     "run-sequence": "^1.1.5",
     "strip-sourcemap-loader": "0.0.1",
     "typescript": "1.8.9",
