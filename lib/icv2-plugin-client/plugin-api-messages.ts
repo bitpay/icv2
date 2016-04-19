@@ -1,4 +1,4 @@
-import { Activity } from './events';
+import { Activity } from './';
 
 export class PluginApiMessage {
   static type = 'empty';
@@ -14,8 +14,9 @@ export class PluginApiMessage {
       requestId: this.requestId
     };
   }
+  
   // TODO: how will icv2 handle cases where a plugin accidentally or maliciously
-  // passes an invalide parameter (invalid Date, Activity, requestId, etc)?
+  // passes an invalid parameter?
   // deserialize()/constructors should validate/sanitize data
   static deserialize(event: MessageEvent){
     var data = event.data;
@@ -47,20 +48,14 @@ export class ReadyMessage extends PluginApiMessage {
 
 export class ActivityMessage extends PluginApiMessage {
   static type = 'activity';
-  begin: Date;
-  end: Date;
   activity: Activity[];
   constructor(data: any){
     super(data);
-    this.begin = new Date(data.begin);
-    this.end = new Date(data.end);
     this.activity = data.activity;
   }
   serialize(){
     return {
       type: ActivityMessage.type,
-      begin: this.begin,
-      end: this.end,
       activity: this.activity,
       requestId: this.requestId
     };

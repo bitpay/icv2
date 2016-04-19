@@ -1,19 +1,15 @@
 // todo: provide instance of icv2 for injection in Angular apps
 // import {provide, Provider} from 'angular2/core';
 
-import { Activity } from './events';
+import { Activity } from './';
 import { PluginApiMessage, ReadyMessage, ActivityMessage } from './plugin-api-messages';
 
 export class Icv2 {
   private _host = window.parent;
 
-  // activity responder
-  private _activityResponder: (begin: Date, end: Date) => Activity[];
-  private _asyncActivityResponder: (begin: Date, end: Date, callback: (activity: Activity[]) => void) => void;
-  private _useAsyncActivityResponder: boolean;
-
   constructor() {
     window.addEventListener('message', this._receiveData.bind(this));
+    this.ready();
   }
 
   private _receiveData(event: MessageEvent) {
@@ -27,10 +23,10 @@ export class Icv2 {
       console.error(error);
     }
 
-    // route to proper responder
-    if(request instanceof ActivityMessage){
-      this._runActivityResponder(request);
-    }
+    // route to proper handler
+    // if(request instanceof DeeplinkHandler){
+    //   this._runActivityResponder(request);
+    // }
 
   }
 
@@ -38,35 +34,12 @@ export class Icv2 {
     this._host.postMessage(message.serialize(), '*');
   }
 
-  ready() {
+  private ready() {
     this._sendData(new ReadyMessage());
   }
 
-  setActivityResponder(func: (begin: Date, end: Date) => Activity[]){
-    this._activityResponder = func;
-    this._useAsyncActivityResponder = false;
-  }
-
-  setAsyncActivityResponder(func: (begin: Date, end: Date, callback: (activity: Activity[]) => void) => void){
-    this._asyncActivityResponder = func;
-    this._useAsyncActivityResponder = true;
-  }
-
-  private _runActivityResponder(request: ActivityMessage){
-    console.log('running activity responder');
-    var activity: Activity[];
-    if(this._useAsyncActivityResponder){
-      this._asyncActivityResponder(request.begin, request.end, (activity: Activity[]) => {
-        this._respondWithActivity(request, activity);
-      });
-    } else {
-      activity = this._activityResponder(request.begin, request.end);
-      this._respondWithActivity(request, activity);
-    }
-  }
-  private _respondWithActivity(request: ActivityMessage, activity: Activity[]){
-    request.setActivity(activity);
-    this._sendData(request);
+  public saveActivity(activity: Activity[]){
+    this._sendData(new ActivityMessage({activity: activity}));
   }
 
 }

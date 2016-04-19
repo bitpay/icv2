@@ -18,31 +18,31 @@
   </div>
   <ion-list>
     <ion-list-header>
-      Notifications ({{notifications.length}})
+      Notifications ({{notificationCount}})
     </ion-list-header>
-    <ion-item *ngFor="#notification of notifications">
+    <ion-item *ngFor="#notificationItem of notifications | async">
       <ion-avatar item-left>
         <ion-icon name="albums"></ion-icon>
       </ion-avatar>
-      <h2>{{notification.heading}}</h2>
-      <p>{{notification.content}}</p>
+      <h2>{{notificationItem.description}}</h2>
+      <p>{{getPluginInstanceName(notificationItem.id)}}</p>
       <div item-right class="text-right">
-        <p>{{notification.data}}</p>
-        <small>{{notification.date | amTimeAgo}}</small>
+        <p>{{notificationItem.data}}</p>
+        <small>{{notificationItem.timestamp | amTimeAgo}}</small>
       </div>
     </ion-item>
     <ion-list-header>
       Activity
     </ion-list-header>
-    <ion-item *ngFor="#activityItem of activity">
+    <ion-item *ngFor="#activityItem of activity | async">
       <ion-avatar item-left>
         <ion-icon name="albums"></ion-icon>
       </ion-avatar>
-      <h2>{{activityItem.heading}}</h2>
-      <p>{{activityItem.content}}</p>
+      <h2>{{activityItem.description}}</h2>
+      <p>{{getPluginInstanceName(activityItem.id)}}</p>
       <div item-right class="text-right">
         <p>{{activityItem.data}}</p>
-        <small>{{activityItem.date | amTimeAgo}}</small>
+        <small>{{activityItem.timestamp | amTimeAgo}}</small>
       </div>
     </ion-item>
   </ion-list>

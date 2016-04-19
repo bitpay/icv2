@@ -5,7 +5,7 @@ export class Profile {
   configuration: ProfileConfiguration;
   activity: Activity[];
   pluginInstances: PluginInstance[];
-  constructor(public name: string, root: SeedPosition){
+  constructor(public name: string, public root: SeedPosition){
     this.configuration = new ProfileConfiguration();
     this.activity = [];
     this.pluginInstances = [];
@@ -96,11 +96,7 @@ class AddressBookEntry {
 }
 
 class SeedPosition {
-  seed: Seed;
-  index: number;
-  constructor(seed: Seed, index: number){
-    this.seed = seed;
-    this.index = index;
+  constructor(public seed: Seed, public index: number){
   }
 }
 

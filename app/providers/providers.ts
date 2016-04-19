@@ -1,3 +1,4 @@
-export { Profile, ProfileProvider } from './profile';
-export { ActivityProvider } from './activity';
-export { RootNavigationProvider } from './root-navigation';
+export * from './profile/profile';
+export * from './activity/activity';
+export * from './root-navigation';
+export * from './persistent-storage/persistent-storage';

@@ -1,17 +1,14 @@
 import 'es6-shim';
-import { App, Platform, IonicApp } from 'ionic-angular';
+import { App, Platform, IonicApp, Events } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { TabsPage } from './pages/tabs/tabs';
-import { PluginManager } from './components/components';
-import { RootNavigationProvider, ProfileProvider } from './providers/providers';
+import { RootNavigationProvider, ProfileProvider, ActivityProvider, PersistentStorageProvider } from './providers/providers';
 
 @App({
-  directives: [PluginManager],
-  providers: [ProfileProvider, RootNavigationProvider],
+  providers: [PersistentStorageProvider, ProfileProvider, RootNavigationProvider, ActivityProvider],
   template:
   `
   <ion-nav id="rootNav" [root]="rootPage"></ion-nav>
-  <plugin-manager></plugin-manager>
   `,
   config: {
     tabbarPlacement: 'bottom'

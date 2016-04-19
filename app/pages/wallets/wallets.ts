@@ -12,9 +12,6 @@ export class WalletsPage {
 
   constructor(public rootNav: RootNavigationProvider) {
     this.plugins = [
-      new PluginInstance(),
-      new PluginInstance(),
-      new PluginInstance()
     ];
   }
 

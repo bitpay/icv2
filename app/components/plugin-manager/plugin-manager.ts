@@ -1,8 +1,9 @@
 import { Component, ElementRef } from "angular2/core";
 import { PluginInstanceHandler } from './plugin-instance-handler';
-export { PluginInstance } from './plugin-instance';
-import { Activity, DateRange } from 'icv2-plugin-client';
-import { Events } from 'ionic-angular';
+export { PluginInstance, Plugin, DerivationPath } from './plugin-instance';
+import { Activity } from 'icv2-plugin-client';
+import { ProfileProvider, Profile, ActivityProvider } from '../../providers/providers';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'plugin-manager',
@@ -11,61 +12,62 @@ import { Events } from 'ionic-angular';
 
 export class PluginManager {
 
-  events: Events;
-  private _pluginManagerDomElement: ElementRef;
-  private _PluginInstanceHandlers: {[s: string]: PluginInstanceHandler} = {};
+  private _PluginInstanceHandlers: PluginInstanceHandler[] = [];
 
   // for performance testing
   private _debug = true;
   private _initTime: number;
-  private _pluginsToMock = 3;
   private _readyMessagesReceived = 0;
   private _pluginsReady = false;
 
-  constructor(public elem: ElementRef, events: Events){
-    console.log('PluginManager constructor called.');
-    this._pluginManagerDomElement = elem;
-    this.events = events;
+  constructor(
+    private _elem: ElementRef,
+    private profileProvider: ProfileProvider,
+    private activityProvider: ActivityProvider
+  ){
+    this.profileProvider.currentProfile.subscribe((currentProfile: Profile) => {
+      console.log('plugin manager received profile: ', currentProfile);
+      // for performance testing
+      if(this._debug){
+        this._initTime = new Date().getTime();
+      }
+      if(this._PluginInstanceHandlers.length > 0){
+        // spin down current handlers
+        this._PluginInstanceHandlers.forEach((instance)=>{
+          instance.destroy();
+        });
+      }
+      currentProfile.pluginInstances.forEach((instance)=>{
+        // spin up new handlers
+        var handler = new PluginInstanceHandler(instance, activityProvider);
+        var newIframe = document.createElement('iframe');
+        newIframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+        // We do this outside of Angular 2 (typically not recommended) because we
+        // need access to the nativeElement for each iframe, and this API is simple
+        // and should remain stable and reliable.
+        this._elem.nativeElement.appendChild(newIframe);
+        // passing in `path` param while testing – ultimately this should
+        // initialize a unique plugin server host or url path for the plugin instance
+        newIframe.setAttribute('src', 'http://localhost:13000/?path=' + instance.derivationPath);
+        handler.iframe = newIframe;
+        this._PluginInstanceHandlers.push(handler);
+      });
+    });
 
-    // mock some plugins
-    for(var i = 1; i <= this._pluginsToMock; i++){
-      this._PluginInstanceHandlers['id' + i] = new PluginInstanceHandler('Sample Plugin ' + i);
-    }
-
-    this._listenForActivityRequests();
-
-    // for performance testing
-    if(this._debug){
-      this._initTime = new Date().getTime();
-    }
     window.addEventListener('message', this.receiveData.bind(this));
-    this.loadPlugins();
-  }
-
-  // We do this outside of Angular 2 (typically not recommended) because we
-  // need access to the nativeElement for each iframe, and this API is simple
-  // and should remain stable and reliable.
-  loadPlugins(){
-    for(var id in this._PluginInstanceHandlers){
-      var newIframe = document.createElement('iframe');
-      newIframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-      this._pluginManagerDomElement.nativeElement.appendChild(newIframe);
-      newIframe.setAttribute('src', 'http://localhost:13000/?id=' + id);
-      this._PluginInstanceHandlers[id].iframe = newIframe;
-    }
   }
 
   // this method passes unsanitized data to the proper PluginInstanceHandler
   receiveData(event: MessageEvent){
-    var senderId: string;
-    for(var instanceId in this._PluginInstanceHandlers){
-      if(this._PluginInstanceHandlers[instanceId].iframe.contentWindow === event.source){
-        senderId = instanceId;
+    var sender: PluginInstanceHandler;
+    for(var i = 0; i < this._PluginInstanceHandlers.length; i++){
+      if(this._PluginInstanceHandlers[i].iframe.contentWindow === event.source){
+        sender = this._PluginInstanceHandlers[i];
         break;
       }
     }
-    if(senderId) {
-      this._PluginInstanceHandlers[senderId].handleMessageFromPlugin(event);
+    if(sender) {
+      sender.handleMessageFromPlugin(event);
     } else {
       console.error('Security Alert: A Plugin API message was received from an unknown source. Contents: ');
       console.log(event);
@@ -84,24 +86,13 @@ export class PluginManager {
         if(ready){
           var finishTime = new Date().getTime();
           var milliseconds = finishTime - this._initTime;
-          var report = this._pluginsToMock + ' plugins loaded, Angular2+Ionic platform ready, in: ' + milliseconds + 'ms (' + milliseconds / 1000 + 's)';
+          var report = this._PluginInstanceHandlers.length + ' plugins loaded, ready, in: ' + milliseconds + 'ms (' + milliseconds / 1000 + 's)';
           console.log(report);
           // window.alert(report);
           this._pluginsReady = true;
         }
       }
     }
-  }
-
-  private _listenForActivityRequests(){
-    this.events.subscribe('activity:requests', (args: DateRange[]) => {
-      var dateRange = args[0];
-      for(var pluginId in this._PluginInstanceHandlers){
-        this._PluginInstanceHandlers[pluginId].getActivity(dateRange, (response: Activity[]) => {
-          this.events.publish('activity:responses', ...response);
-        });
-      }
-    });
   }
 
 }

@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
   devtool: 'source-map',
   entry: [
-    path.normalize('es6-shim/es6-shim.min'),
+    path.normalize('es6-shim/es6-shim'),
     'reflect-metadata',
     path.normalize('zone.js/dist/zone'),
     path.resolve('app/app')
@@ -34,7 +34,7 @@ module.exports = {
       }
     ],
     noParse: [
-      /es6-shim/,
+      // /es6-shim/,
       /reflect-metadata/,
       /zone\.js(\/|\\)dist(\/|\\)zone/
     ]

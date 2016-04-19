@@ -10,4 +10,6 @@ export class RootNavigationProvider {
   public getRootNav(){
     return this.rootNavigation;
   }
+  constructor(){
+  }
 }

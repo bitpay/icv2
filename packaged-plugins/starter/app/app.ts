@@ -16,26 +16,24 @@ export class MyApp {
   var icv2 = this.icv2; // TEMP
 
     platform.ready().then(() => {
-      var id = window.location.search.split('=')[1];
+      var path = window.location.search.split('=')[1];
 
-      icv2.ready();
-      console.log('icv2.ready() called for plugin: ' + id);
-
-      function sampleResponder(begin: Date, end: Date){
-        console.log('fetching activity between ' + begin + 'and' + end);
-        var activity: Activity[];
-        switch(id){
-          case 'id1':
+      function getSampleActivity(path){
+        switch(path){
+          case 'T2cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S/0':
             return companyFunds();
-          case 'id2':
+          case 'TQ2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3/0':
             return businessExpenses();
-          case 'id3':
+          case 'TPSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc/0':
             return coloredCoins();
           default:
             return companyFunds();
         }
       }
-      icv2.setActivityResponder(sampleResponder);
+
+      icv2.saveActivity(getSampleActivity(path));
+
+      console.log('Ionic platform.ready() called for plugin: ' + path);
     });
   }
 }
@@ -44,27 +42,24 @@ export class MyApp {
 function companyFunds(){
   var activity: Activity[] = [
     new Activity({
-      heading: 'Payment Proposal',
-      content: 'Company Funds',
+      description: 'Payment Proposal',
       data: '-1,423,000 bits',
-      date: new Date(Date.now() - 1000*60*60*2),
+      timestamp: new Date(Date.now() - 1000*60*60*2),
       id: '1',
       deeplink: false,
       notification: true
     }),
     new Activity({
-      heading: 'Payment Received',
-      content: 'Company Funds',
+      description: 'Payment Received',
       data: '-1,423,000 bits',
-      date: new Date(Date.now() - 1000*60*60*24*0.8),
+      timestamp: new Date(Date.now() - 1000*60*60*24*0.8),
       id: '2',
       deeplink: false
     }),
     new Activity({
-      heading: '2 of 3 Wallet Created',
-      content: 'Company Funds',
+      description: '2 of 3 Wallet Created',
       data: null,
-      date: new Date(Date.now() - 1000*60*60*24*1.5),
+      timestamp: new Date(Date.now() - 1000*60*60*24*1.5),
       id: '3',
       deeplink: false
     })
@@ -75,18 +70,16 @@ function companyFunds(){
 function businessExpenses(){
   var activity: Activity[] = [
     new Activity({
-      heading: 'Payment Received',
-      content: 'Business Expenses',
+      description: 'Payment Received',
       data: '163,500 bits',
-      date: new Date(Date.now() - 1000*60*60*5),
+      timestamp: new Date(Date.now() - 1000*60*60*5),
       id: '1',
       deeplink: false
     }),
     new Activity({
-      heading: 'Payment Sent',
-      content: 'Business Expenses',
+      description: 'Payment Sent',
       data: '43,000 bits',
-      date: new Date(Date.now() - 1000*60*60*24*0.8),
+      timestamp: new Date(Date.now() - 1000*60*60*24*0.8),
       id: '2',
       deeplink: false
     })
@@ -97,26 +90,23 @@ function businessExpenses(){
 function coloredCoins(){
   var activity: Activity[] = [
     new Activity({
-      heading: 'Issued BPAY Stock',
-      content: 'Business Assets (2 of 3)',
+      description: 'Issued BPAY Stock',
       data: '13,000 shares',
-      date: new Date(Date.now() - 1000*60*60*7),
+      timestamp: new Date(Date.now() - 1000*60*60*7),
       id: '1',
       deeplink: false
     }),
     new Activity({
-      heading: 'Received USD Payment',
-      content: 'Business Assets (2 of 3)',
+      description: 'Received USD Payment',
       data: '$12,854.45 USD',
-      date: new Date(Date.now() - 1000*60*60*24*0.8),
+      timestamp: new Date(Date.now() - 1000*60*60*24*0.8),
       id: '2',
       deeplink: false
     }),
     new Activity({
-      heading: 'Received EUR Payment',
-      content: 'Business Assets (2 of 3)',
+      description: 'Received EUR Payment',
       data: '$43,691.70 EUR',
-      date: new Date(Date.now() - 1000*60*60*24*0.9),
+      timestamp: new Date(Date.now() - 1000*60*60*24*0.9),
       id: '3',
       deeplink: false
     })

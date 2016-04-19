@@ -30,7 +30,7 @@ Plugins developers are free to develop unique and complex interfaces within the 
 
 ### Communicating with Icv2
 
-Plugin's communicate with Icv2 via a well-defined `PostMessage`-based Plugin API. A Javascript/Typescript wrapper-library, `Icv2PluginClient`, makes interacting with the Icv2 Plugin API simple.
+Plugin's communicate with Icv2 via an RPC-like, `PostMessage`-based Plugin API. A Javascript/Typescript wrapper-library, `Icv2PluginClient`, makes interacting with the Icv2 Plugin API simple.
 
 # Icv2 Plugin API
 

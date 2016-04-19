@@ -1,2 +1,2 @@
-export { FeePolicy, BitcoinNetworkFeePolicy } from './fee-policy/fee-policy';
-export { PluginManager, PluginInstance } from './plugin-manager/plugin-manager';
+export * from './fee-policy/fee-policy';
+export * from './plugin-manager/plugin-manager';
