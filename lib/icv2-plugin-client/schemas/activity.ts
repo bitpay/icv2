@@ -4,7 +4,7 @@ export class Activity {
   description: string;
   data: string;
   metadata: string;
-  deeplink: boolean;
+  deeplink: boolean; // TODO: should this be optional? The user may expect all activity to be clickable.
   notification: boolean;
   constructor(contents: {
     id: string;

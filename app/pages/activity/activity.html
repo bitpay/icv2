@@ -20,7 +20,7 @@
     <ion-list-header>
       Notifications ({{notificationCount}})
     </ion-list-header>
-    <ion-item *ngFor="#notificationItem of notifications | async">
+    <ion-item *ngFor="#notificationItem of notifications | async" class="clickable">
       <ion-avatar item-left>
         <ion-icon name="albums"></ion-icon>
       </ion-avatar>
@@ -34,7 +34,7 @@
     <ion-list-header>
       Activity
     </ion-list-header>
-    <ion-item *ngFor="#activityItem of activity | async">
+    <ion-item *ngFor="#activityItem of activity | async" [ngClass]="{'clickable': activityItem.deeplink}">
       <ion-avatar item-left>
         <ion-icon name="albums"></ion-icon>
       </ion-avatar>

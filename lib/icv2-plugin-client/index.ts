@@ -1,3 +1,3 @@
-export { Activity } from './schemas/activity';
-export { Icv2 } from './icv2';
-export { PluginApiMessage, ReadyMessage, ActivityMessage } from './plugin-api-messages';
+export * from './schemas/activity';
+export * from './icv2';
+export * from './plugin-api-messages';

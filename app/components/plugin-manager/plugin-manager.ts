@@ -2,7 +2,7 @@ import { Component, ElementRef } from "angular2/core";
 import { PluginInstanceHandler } from './plugin-instance-handler';
 export { PluginInstance, Plugin, DerivationPath } from './plugin-instance';
 import { Activity } from 'icv2-plugin-client';
-import { ProfileProvider, Profile, ActivityProvider } from '../../providers/providers';
+import { ProfileProvider, Profile, ActivityProvider, RootNavigationProvider } from '../../providers/providers';
 import { Subject, Observable } from 'rxjs';
 
 @Component({
@@ -23,7 +23,8 @@ export class PluginManager {
   constructor(
     private _elem: ElementRef,
     private profileProvider: ProfileProvider,
-    private activityProvider: ActivityProvider
+    private activityProvider: ActivityProvider,
+    private rootNav: RootNavigationProvider
   ){
     this.profileProvider.currentProfile.subscribe((currentProfile: Profile) => {
       console.log('plugin manager received profile: ', currentProfile);
@@ -39,8 +40,9 @@ export class PluginManager {
       }
       currentProfile.pluginInstances.forEach((instance)=>{
         // spin up new handlers
-        var handler = new PluginInstanceHandler(instance, activityProvider);
+        var handler = new PluginInstanceHandler(instance, activityProvider, rootNav);
         var newIframe = document.createElement('iframe');
+        newIframe.setAttribute('id', instance.derivationPath.toString());
         newIframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
         // We do this outside of Angular 2 (typically not recommended) because we
         // need access to the nativeElement for each iframe, and this API is simple

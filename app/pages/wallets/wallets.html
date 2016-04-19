@@ -17,13 +17,13 @@
 
 <ion-content>
   <ion-card *ngFor="#plugin of plugins">
-    <ion-item>
+    <ion-item (click)="openPlugin(plugin)" style="cursor: pointer">
       <ion-avatar item-left>
         <ion-icon name="albums"></ion-icon>
       </ion-avatar>
       <div item-right class="text-right">
-        <h2>Plugin Name</h2>
-        <p>[plugin data summary]</p>
+        <h2>{{plugin.name}}</h2>
+        <p>{{plugin.status}}</p>
       </div>
     </ion-item>
   </ion-card>

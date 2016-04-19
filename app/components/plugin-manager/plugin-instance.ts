@@ -2,6 +2,7 @@ export class PluginInstance {
   private: boolean;
   archived: boolean;
   derivationPath: DerivationPath;
+  status: string;
   constructor(public name: string, public plugin: Plugin){
     this.derivationPath = plugin.issueDerivationPath();
   }
@@ -14,7 +15,7 @@ export class DerivationPath {
     this.pluginId = plugin.pluginId;
   }
   toString(){
-    return this.pluginId + '/' + this.index;
+    return this.pluginId + ':' + this.index;
   }
 }
 

@@ -37,7 +37,7 @@ export class ActivityPage {
     this.showSearch = !this.showSearch;
   }
   getPluginInstanceName(activityId){
-    var id = activityId.split('/')[0];
+    var id = activityId.split(':')[0];
     for(var i = 0; i < this.currentPluginInstances.length; i++){
       if(id === this.currentPluginInstances[i].derivationPath.pluginId){
         return this.currentPluginInstances[i].name;

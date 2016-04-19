@@ -1,15 +1,14 @@
-// todo: provide instance of icv2 for injection in Angular apps
-// import {provide, Provider} from 'angular2/core';
-
+import { Injectable } from 'angular2/core';
 import { Activity } from './';
-import { PluginApiMessage, ReadyMessage, ActivityMessage } from './plugin-api-messages';
+import { PluginApiMessage, ReadyMessage, CloseMessage, ActivityMessage } from './plugin-api-messages';
 
+@Injectable()
 export class Icv2 {
   private _host = window.parent;
 
   constructor() {
     window.addEventListener('message', this._receiveData.bind(this));
-    this.ready();
+    this._ready();
   }
 
   private _receiveData(event: MessageEvent) {
@@ -34,12 +33,16 @@ export class Icv2 {
     this._host.postMessage(message.serialize(), '*');
   }
 
-  private ready() {
+  private _ready() {
     this._sendData(new ReadyMessage());
   }
 
   public saveActivity(activity: Activity[]){
     this._sendData(new ActivityMessage({activity: activity}));
+  }
+
+  public close(){
+    this._sendData(new CloseMessage());
   }
 
 }

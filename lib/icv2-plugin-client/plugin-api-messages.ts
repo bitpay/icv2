@@ -14,7 +14,7 @@ export class PluginApiMessage {
       requestId: this.requestId
     };
   }
-  
+
   // TODO: how will icv2 handle cases where a plugin accidentally or maliciously
   // passes an invalid parameter?
   // deserialize()/constructors should validate/sanitize data
@@ -24,6 +24,8 @@ export class PluginApiMessage {
       switch(data.type){
         case ReadyMessage.type:
           return new ReadyMessage();
+        case CloseMessage.type:
+          return new CloseMessage();
         case ActivityMessage.type:
           return new ActivityMessage(data);
         default:
@@ -41,6 +43,19 @@ export class ReadyMessage extends PluginApiMessage {
   serialize(){
     return {
       type: ReadyMessage.type,
+      requestId: this.requestId
+    };
+  }
+}
+
+export class CloseMessage extends PluginApiMessage {
+  static type = 'close';
+  constructor(){
+    super(null);
+  }
+  serialize(){
+    return {
+      type: CloseMessage.type,
       requestId: this.requestId
     };
   }

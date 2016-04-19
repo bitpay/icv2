@@ -1,8 +1,7 @@
 // TODO: use ExceptionHandler
-import { Activity } from 'icv2-plugin-client';
-import { PluginApiMessage, ReadyMessage, ActivityMessage } from 'icv2-plugin-client/plugin-api-messages';
+import { Activity, PluginApiMessage, ReadyMessage, CloseMessage, ActivityMessage } from 'icv2-plugin-client';
 import { PluginInstance } from './plugin-instance';
-import { ActivityProvider } from '../../providers/providers';
+import { ActivityProvider, RootNavigationProvider } from '../../providers/providers';
 
 // This class is responsible for communicating with plugins, enforcing
 // permissions, and sanatizing all plugin communications.
@@ -11,7 +10,7 @@ export class PluginInstanceHandler {
   name: string;
   iframe: HTMLIFrameElement;
   ready: boolean;
-  constructor(private instance: PluginInstance, private activityProvider: ActivityProvider){
+  constructor(private instance: PluginInstance, private activityProvider: ActivityProvider, private rootNav: RootNavigationProvider){
     this.name = instance.name;
   }
   destroy(){
@@ -31,11 +30,17 @@ export class PluginInstanceHandler {
 
     // TODO:
     // check permissions, provide data / execute action if ok
-    // console.log('handling message from plugin:');
-    // console.log(message);
+    console.log('handling message from plugin:');
+    console.log(message);
 
     if(message instanceof ReadyMessage){
       this.ready = true;
+    }
+
+    if(message instanceof CloseMessage){
+      console.log('TODO: should verify which plugin sent close message.');
+      this.rootNav.reselectTab();
+      this.rootNav.closePlugin();
     }
 
     if(message instanceof ActivityMessage){
@@ -44,6 +49,7 @@ export class PluginInstanceHandler {
       })
       this.activityProvider.saveActivity(message.activity);
     }
+
 
   }
 }
