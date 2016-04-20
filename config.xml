@@ -13,7 +13,7 @@
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.0.0" />
-    <plugin name="cordova-sqlite-ext" spec="~0.9.1" />
+    <plugin name="cordova-sqlite-storage" spec="~1.2.1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

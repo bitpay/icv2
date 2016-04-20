@@ -56,16 +56,18 @@
     "start": "node develop.js",
     "electron": "electron electron.js",
     "install": "npm run install-tooling && cordova prepare",
-    "install-tooling": "npm run link-plugin-client && npm run install-hooks && npm run install-starter && npm run install-simserver",
+    "install-tooling": "npm run link-plugin-client && npm run install-hooks && npm run install-starter && npm run install-wallet && npm run install-simserver",
     "link-plugin-client": "cd lib/icv2-plugin-client && npm link && cd ../../ && npm link icv2-plugin-client",
     "install-hooks": "cd tooling/hooks && npm install",
     "install-starter": "cd packaged-plugins/starter && ln -s ../../node_modules/ node_modules && npm install",
+    "install-wallet": "cd packaged-plugins/wallet && ln -s ../../node_modules/ node_modules && npm install",
     "install-simserver": "cd tooling/simserver && npm install",
     "serve-app": "ionic serve -p 8105 -r 35735",
     "serve-starter": "cd packaged-plugins/starter && ionic serve -b -p 8110 -r 35740",
+    "serve-wallet": "cd packaged-plugins/wallet && ionic serve -b -p 8111 -r 35741",
     "serve-simserver": "node tooling/simserver/proxy.js 8110",
     "clean": "git clean -dfx",
-    "clean-tsc": "find app lib packaged-plugins/starter/app -name '*.js' -exec rm {} \\; && find app lib packaged-plugins/starter/app -name '*.js.map' -exec rm {} \\;",
+    "clean-tsc": "find app lib packaged-plugins/starter/app packaged-plugins/wallet/app -name '*.js' -exec rm {} \\; && find app lib packaged-plugins/starter/app packaged-plugins/wallet/app -name '*.js.map' -exec rm {} \\;",
     "test": "echo 'Running Tests:' && karma start && tsc && npm run clean-tsc",
     "watch:test": "karma start --auto-watch --no-single-run",
     "coverage": "tsc && karma start && npm run map-coverage && npm run clean-tsc",
@@ -74,7 +76,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bitpay/ionic2-copay.git"
+    "url": "git://github.com/bitpay/icv2.git"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
@@ -83,7 +85,7 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-sqlite-ext"
+    "cordova-sqlite-storage"
   ],
   "cordovaPlatforms": [
     "ios"

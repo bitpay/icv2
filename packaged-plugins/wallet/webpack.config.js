@@ -1,11 +1,11 @@
 'use strict';
 var path = require('path');
-var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+
 
 module.exports = {
   devtool: 'source-map',
   entry: [
-    path.normalize('es6-shim/es6-shim'),
+    path.normalize('es6-shim/es6-shim.min'),
     'reflect-metadata',
     path.normalize('zone.js/dist/zone'),
     path.resolve('app/app')
@@ -34,20 +34,8 @@ module.exports = {
         loader: 'strip-sourcemap'
       }
     ],
-    postLoaders: [
-      // instrument only testing sources with Istanbul
-      {
-        test: /\.(js|ts)$/,
-        include: path.resolve('app'),
-        loader: 'istanbul-instrumenter-loader',
-        exclude: [
-          /\.(e2e|spec)\.ts$/,
-          /node_modules/
-        ]
-      }
-    ],
     noParse: [
-      // /es6-shim/,
+      /es6-shim/,
       /reflect-metadata/,
       /zone\.js(\/|\\)dist(\/|\\)zone/
     ]

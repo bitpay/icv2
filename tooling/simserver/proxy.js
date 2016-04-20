@@ -1,7 +1,8 @@
 'use strict';
 
 var express = require('express');
-var simulatedPluginServer = express();
+var simulatedPluginServer1 = express();
+var simulatedPluginServer2 = express();
 var pluginCSPReportingServer = express();
 var url = require('url');
 var proxy = require('proxy-middleware');
@@ -17,8 +18,9 @@ if(typeof port === 'undefined'){
   port = 8110;
 }
 
-var localPluginUrl = 'http://localhost:' + port;
-var exceptions = ['http://localhost:35730', 'ws://localhost:35730', 'http://localhost:35740', 'ws://localhost:35740']; // for livereload, etc.
+var localPluginUrl1 = 'http://localhost:' + port;
+var localPluginUrl2 = 'http://localhost:' + (port + 1);
+var exceptions = ['http://localhost:35730', 'ws://localhost:35730', 'http://localhost:35740', 'http://localhost:35741', 'ws://localhost:35740', 'ws://localhost:35741']; // for livereload, etc.
 var CSPViolationUri = 'http://localhost:12999/report';
 
 // lock down the CSP for simulatedPluginServer
@@ -39,12 +41,22 @@ var lockdown = function(req, res, next) {
     return next();
   };
 
-simulatedPluginServer.use(lockdown);
+simulatedPluginServer1.use(lockdown);
+simulatedPluginServer2.use(lockdown);
 
-simulatedPluginServer.use('/', proxy(url.parse(localPluginUrl)));
+simulatedPluginServer1.use('/', proxy(url.parse(localPluginUrl1)));
+simulatedPluginServer2.use('/', proxy(url.parse(localPluginUrl2)));
 
-simulatedPluginServer.listen(13000, function () {
-  console.log(chalk.inverse('Proxying requests from ' + localPluginUrl + ' to port 13000.'));
+simulatedPluginServer1.listen(13000, function () {
+  console.log(chalk.inverse('Proxying requests from ' + localPluginUrl1 + ' to port 13000.'));
+  console.log();
+  console.log(chalk.yellow('The following exceptions have been made for testing:'));
+  console.log(chalk.yellow(exceptions.join(', ')));
+  console.log();
+});
+
+simulatedPluginServer2.listen(13001, function () {
+  console.log(chalk.inverse('Proxying requests from ' + localPluginUrl2 + ' to port 13001.'));
   console.log();
   console.log(chalk.yellow('The following exceptions have been made for testing:'));
   console.log(chalk.yellow(exceptions.join(', ')));

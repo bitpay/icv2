@@ -12,6 +12,10 @@ var processes = [
   },
   {
     command: 'npm',
+    args: ['run', 'serve-wallet']
+  },
+  {
+    command: 'npm',
     args: ['run', 'serve-simserver']
   }
 ];

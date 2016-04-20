@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "name": "icv2-wallet",
+  "description": "The packaged icv2 bitcoin wallet plugin."
+}

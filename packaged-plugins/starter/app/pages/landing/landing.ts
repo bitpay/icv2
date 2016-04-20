@@ -22,7 +22,6 @@ export class LandingPage {
     }
   }
   closePlugin(){
-    console.log('Trying to close plugin');
     this.icv2.close();
   }
 }
