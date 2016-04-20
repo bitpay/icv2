@@ -6,7 +6,7 @@ Icv2 plugins run in tightly-controlled containers, and are only able to access r
 
 ## Getting Started
 
-The Icv2 repo includes several `packaged-plugins` which are built into the published app. The `starter` plugin is intended to help new developers get off the ground quickly.
+The Icv2 repo includes several `packaged-plugins` which are built into the published app. The `starter` plugin is intended to demonstrate the functionality of the plugin API and help new developers get off the ground quickly.
 
 To get started, simple clone the Icv2 repo, and begin editing the plugin in `packaged-plugins/starter`. The `npm start` command will also make the `starter` plugin available in the app.
 
@@ -34,23 +34,7 @@ Plugin's communicate with Icv2 via an RPC-like, `PostMessage`-based Plugin API. 
 
 # Icv2 Plugin API
 
-## Initializing a Plugin
-
-### Responders
-
-#### Activity
-
-- setActivityResponder()
-
-#### DeepLinks
-
-- setDeepLinkResponder()
-
-### Ready()
-
 ## Getting Permissions
-
-- getCapabilities()
 
 ## Making Web Requests
 
@@ -72,3 +56,81 @@ Plugin's communicate with Icv2 via an RPC-like, `PostMessage`-based Plugin API. 
 - deriving all keys from plugin's assigned, hardened HD key (making plugin keys recoverable from backup)
 
 ## Requesting Funds
+
+# Icv2 Plugin Client API Reference
+
+The Icv2 Plugin Client API is designed to be intuitive, well-namespaced, and easily typechecked.
+
+#### `icv2.close()`
+
+#### `icv2.openURI(uri: string) => Promise<boolean>`
+
+## Instance
+
+#### `icv2.instance.setName(name: string) => Promise<boolean>`
+
+#### `icv2.instance.setStatus(status: string) => Promise<boolean>`
+
+#### `icv2.instance.setNextBitcoinAddress(address: string) => Promise<boolean>`
+- used by receive view
+- QR code uses this if another QRString isn't set
+
+#### `icv2.instance.setQRString(string: string) => Promise<boolean>`
+- for plugins wanting to their QR code for non-bitcoin address data
+
+#### `icv2.instance.getInstallParams() => Promise<Object>`
+
+Instance install params can be set by installing a plugin instance from a deeplink URI, where the `p` parameter is a JSON object of install params, eg: `icv2://install?id=T2cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S&p={"join":"TQ2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3"}`
+
+Which would return:
+```
+{
+  "join": "TQ2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3"
+}
+```
+
+<!-- #### icv2.instance.getQRString() -->
+
+#### `icv2.instance.getMasterPrivateKey()`
+
+## Activity
+
+#### `icv2.activity.push(activity: Activity[])`
+
+When transfering funds between plugins, the sending plugin should provide the activity.
+
+#### `icv2.activity.getLatest(count: number)`
+
+#### `icv2.activity.getPeriod(from: Date, to: Date)`
+
+## Storage
+
+#### `icv2.storage.get(key: string)`
+
+#### `icv2.storage.set(key: string, value: any)`
+
+## Scanner
+
+#### `icv2.scanner.registerURI()`
+
+#### `icv2.scanner.registerPattern()`
+
+## Deep Linking
+
+#### `icv2.deeplink.setHandler()`
+
+## Capabilities
+
+#### `icv2.capabilities.getAll()`
+
+
+## BWS
+
+#### `icv2.bws.monitorAddresses()`
+
+#### `icv2.bws.unmonitorAddresses()`
+
+
+## Bitcore?
+
+#### icv2.bitcore. [...]

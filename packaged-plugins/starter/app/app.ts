@@ -43,6 +43,14 @@ function companyFunds(){
       notification: true
     }),
     new Activity({
+      description: 'Receiving Payment',
+      data: '-218,500 bits',
+      timestamp: new Date(Date.now() - 1000*60*2),
+      id: '4',
+      deeplink: true,
+      notification: false
+    }),
+    new Activity({
       description: 'Payment Received',
       data: '-1,423,000 bits',
       timestamp: new Date(Date.now() - 1000*60*60*24*0.8),
