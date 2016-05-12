@@ -3,7 +3,7 @@
     "angular2": "2.0.0-beta.15",
     "angular2-moment": "^0.5.0",
     "core-js": "^2.2.1",
-    "es6-promise": "3.1.2",
+    "es6-promise": "3.2.1",
     "es6-shim": "^0.35.0",
     "icv2-plugin-client": "file:./lib/icv2-plugin-client",
     "ionic-angular": "2.0.0-beta.4",
