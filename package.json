@@ -46,7 +46,7 @@
     "strip-sourcemap-loader": "0.0.1",
     "typescript": "1.8.10",
     "validate-commit-msg": "^2.6.1",
-    "webpack": "1.13.0"
+    "webpack": "1.13.1"
   },
   "name": "icv2",
   "description": "icv2",
