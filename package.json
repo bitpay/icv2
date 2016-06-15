@@ -23,7 +23,7 @@
     "ghooks": "^1.0.3",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "^3.1.0",
-    "gulp-sass": "2.2.0",
+    "gulp-sass": "2.3.2",
     "gulp-watch": "4.3.5",
     "ionic": "^2.0.0-beta.19",
     "ionic-gulp-fonts-copy": "^1.0.0",
