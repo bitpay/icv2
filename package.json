@@ -18,7 +18,7 @@
     "cordova": "^6.1.0",
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.5",
-    "del": "2.2.0",
+    "del": "2.2.1",
     "electron-prebuilt": "^0.37.6",
     "ghooks": "^1.0.3",
     "gulp": "3.9.1",
