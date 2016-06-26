@@ -7,7 +7,7 @@
     "es6-shim": "^0.35.0",
     "icv2-plugin-client": "file:./lib/icv2-plugin-client",
     "ionic-angular": "2.0.0-beta.4",
-    "ionic-native": "^1.1.0",
+    "ionic-native": "^1.3.1",
     "ionicons": "3.0.0-alpha.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
