@@ -32,7 +32,7 @@
     "ionic-gulp-scripts-copy": "^1.0.0",
     "ionic-gulp-webpack": "^1.0.0",
     "istanbul-instrumenter-loader": "^0.2.0",
-    "karma": "^0.13.21",
+    "karma": "^1.1.1",
     "karma-chrome-launcher": "^0.2.3",
     "karma-coverage": "^0.5.3",
     "karma-jasmine": "^0.3.8",
